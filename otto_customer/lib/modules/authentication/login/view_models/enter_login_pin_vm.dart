@@ -1,10 +1,10 @@
 import 'package:otto_customer/modules/authentication/login/returning_login.dart';
-import 'package:otto_customer/shared/models/authentication/account_verification_dto.dart';
 import 'package:otto_customer/shared/models/authentication/login_verification_dto.dart';
 import 'package:otto_customer/shared/widgets/all_package.dart';
 
 class EnterLoginVerificationViewModel extends BaseViewModel {
-  EnterLoginVerificationViewModel({required this.phoneNumber, this.context, this.authenticationService});
+  EnterLoginVerificationViewModel(
+      {required this.phoneNumber, this.context, this.authenticationService});
 
   final BuildContext? context;
   final AuthenticationService? authenticationService;
@@ -14,15 +14,12 @@ class EnterLoginVerificationViewModel extends BaseViewModel {
   UserData? userData;
 
   @override
-  FutureOr<void> init() {
-
-  }
+  FutureOr<void> init() {}
 
   loading(bool isLoad) {
     newLoad = isLoad;
     notifyListeners();
   }
-
 
   final TextEditingController pinPutController = TextEditingController();
   final FocusNode pinPutFocusNode = FocusNode();
@@ -74,9 +71,12 @@ class EnterLoginVerificationViewModel extends BaseViewModel {
       // successSnackBar(message: viewModel.message!, context: context!);
       snackBar(context: context!, message: message!, isError: false);
       Navigator.push(
-        context!, MaterialPageRoute(builder: (context) => ReturnLogin(
-          user: userData,),
-      ),
+        context!,
+        MaterialPageRoute(
+          builder: (context) => ReturnLogin(
+            user: userData,
+          ),
+        ),
       );
     } else {
       // isLoading = false;
@@ -96,12 +96,11 @@ class EnterLoginVerificationViewModel extends BaseViewModel {
     }
   }
 
-
   Future<bool> loginVerification({Map<String, dynamic>? data}) async {
     loading(true);
     try {
       final ApiResponse<LoginVerificationDto> res =
-      await authenticationService!.loginVerificationService(data!);
+          await authenticationService!.loginVerificationService(data!);
       debugPrint("loginVerification message from res ${res.message}");
 
       if (res.error!) {
@@ -113,7 +112,8 @@ class EnterLoginVerificationViewModel extends BaseViewModel {
         // message = "Success!";
         message = res.message;
         userData = res.data!.data!;
-        debugPrint("loginVerification success message $userData == ${res.message}");
+        debugPrint(
+            "loginVerification success message $userData == ${res.message}");
         debugPrint("loginVerification success data ${res.data}");
         loading(false);
         return true;
@@ -131,7 +131,7 @@ class EnterLoginVerificationViewModel extends BaseViewModel {
 
     try {
       final ApiResponse<SetupAccountDto> res =
-      await authenticationService!.setupAccountService(data!);
+          await authenticationService!.setupAccountService(data!);
       debugPrint("accountVerification message from res ${res.message}");
 
       if (res.error!) {
@@ -154,5 +154,4 @@ class EnterLoginVerificationViewModel extends BaseViewModel {
       return false;
     }
   }
-
 }

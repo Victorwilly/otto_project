@@ -10,13 +10,13 @@ import 'package:otto_customer/modules/authentication/forgot_password/enter_otp.d
 import 'package:otto_customer/modules/authentication/forgot_password/forgot_pin.dart';
 import 'package:otto_customer/modules/authentication/forgot_password/setup_new_pin.dart';
 import 'package:otto_customer/modules/authentication/login/enter_login_verification.dart';
+import 'package:otto_customer/modules/dashboard/homepage/bottom-nav-page.dart';
 import 'package:otto_customer/modules/splash/splash_options.dart';
 import 'package:otto_customer/modules/splash/splash_screen.dart';
 
 import '../modules/authentication/forgot_password/pin_reset_success.dart';
 import '../modules/authentication/login/new_login.dart';
 import '../modules/authentication/login/returning_login.dart';
-import '../shared/widgets/bottom_nav.dart';
 import 'route_paths.dart';
 
 class MainRouter {
@@ -41,7 +41,8 @@ class MainRouter {
       case RoutePaths.newSignIn:
         return MaterialPageRoute(builder: (_) => NewLogin());
       case RoutePaths.enterLoginPin:
-        return MaterialPageRoute(builder: (_) => const EnterLoginVerification());
+        return MaterialPageRoute(
+            builder: (_) => const EnterLoginVerification());
       case RoutePaths.signIn:
         return MaterialPageRoute(builder: (_) => const ReturnLogin());
       case RoutePaths.forgotPin:
@@ -53,7 +54,8 @@ class MainRouter {
       case RoutePaths.pinResetSuccess:
         return MaterialPageRoute(builder: (_) => const PinResetSuccess());
       case RoutePaths.bottomNav:
-        return MaterialPageRoute(builder: (_) => const BottomNav());
+        return MaterialPageRoute(
+            builder: (_) => const BottomNavPage()); //BottomNav());
       case RoutePaths.splashOptions:
         return MaterialPageRoute(builder: (_) => const SplashOptions());
       default:

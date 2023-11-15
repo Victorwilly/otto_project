@@ -4,14 +4,16 @@
 
 import 'dart:convert';
 
-AuthenticationDto authenticationDtoFromJson(String str) => AuthenticationDto.fromJson(json.decode(str));
+AuthenticationDto authenticationDtoFromJson(String str) =>
+    AuthenticationDto.fromJson(json.decode(str));
 
-String authenticationDtoToJson(AuthenticationDto data) => json.encode(data.toJson());
+String authenticationDtoToJson(AuthenticationDto data) =>
+    json.encode(data.toJson());
 
 class AuthenticationDto {
   final bool? error;
   final String? message;
-  final Data? data;
+  final LoginData? data;
 
   AuthenticationDto({
     this.error,
@@ -19,41 +21,42 @@ class AuthenticationDto {
     this.data,
   });
 
-  factory AuthenticationDto.fromJson(Map<String, dynamic> json) => AuthenticationDto(
-    error: json["error"],
-    message: json["message"],
-    data: json["data"] == null ? null : Data.fromJson(json["data"]),
-  );
+  factory AuthenticationDto.fromJson(Map<String, dynamic> json) =>
+      AuthenticationDto(
+        error: json["error"],
+        message: json["message"],
+        data: json["data"] == null ? null : LoginData.fromJson(json["data"]),
+      );
 
   Map<String, dynamic> toJson() => {
-    "error": error,
-    "message": message,
-    "data": data?.toJson(),
-  };
+        "error": error,
+        "message": message,
+        "data": data?.toJson(),
+      };
 }
 
-class Data {
+class LoginData {
   final User? user;
   final String? accessToken;
   final String? tokenType;
 
-  Data({
+  LoginData({
     this.user,
     this.accessToken,
     this.tokenType,
   });
 
-  factory Data.fromJson(Map<String, dynamic> json) => Data(
-    user: json["user"] == null ? null : User.fromJson(json["user"]),
-    accessToken: json["accessToken"],
-    tokenType: json["tokenType"],
-  );
+  factory LoginData.fromJson(Map<String, dynamic> json) => LoginData(
+        user: json["user"] == null ? null : User.fromJson(json["user"]),
+        accessToken: json["accessToken"],
+        tokenType: json["tokenType"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "user": user?.toJson(),
-    "accessToken": accessToken,
-    "tokenType": tokenType,
-  };
+        "user": user?.toJson(),
+        "accessToken": accessToken,
+        "tokenType": tokenType,
+      };
 }
 
 class User {
@@ -94,42 +97,50 @@ class User {
   });
 
   factory User.fromJson(Map<String, dynamic> json) => User(
-    id: json["id"],
-    firstname: json["firstname"],
-    lastname: json["lastname"],
-    networkProvider: json["network_provider"],
-    countryCode: json["country_code"],
-    phoneno: json["phoneno"],
-    email: json["email"],
-    emailVerifiedAt: json["email_verified_at"],
-    isVerified: json["is_verified"],
-    isActive: json["is_active"],
-    canLogin: json["can_login"],
-    isCompleted: json["is_completed"],
-    the2Fa: json["2fa"],
-    createdAt: json["created_at"] == null ? null : DateTime.parse(json["created_at"]),
-    updatedAt: json["updated_at"] == null ? null : DateTime.parse(json["updated_at"]),
-    roles: json["roles"] == null ? [] : List<Role>.from(json["roles"]!.map((x) => Role.fromJson(x))),
-  );
+        id: json["id"],
+        firstname: json["firstname"],
+        lastname: json["lastname"],
+        networkProvider: json["network_provider"],
+        countryCode: json["country_code"],
+        phoneno: json["phoneno"],
+        email: json["email"],
+        emailVerifiedAt: json["email_verified_at"],
+        isVerified: json["is_verified"],
+        isActive: json["is_active"],
+        canLogin: json["can_login"],
+        isCompleted: json["is_completed"],
+        the2Fa: json["2fa"],
+        createdAt: json["created_at"] == null
+            ? null
+            : DateTime.parse(json["created_at"]),
+        updatedAt: json["updated_at"] == null
+            ? null
+            : DateTime.parse(json["updated_at"]),
+        roles: json["roles"] == null
+            ? []
+            : List<Role>.from(json["roles"]!.map((x) => Role.fromJson(x))),
+      );
 
   Map<String, dynamic> toJson() => {
-    "id": id,
-    "firstname": firstname,
-    "lastname": lastname,
-    "network_provider": networkProvider,
-    "country_code": countryCode,
-    "phoneno": phoneno,
-    "email": email,
-    "email_verified_at": emailVerifiedAt,
-    "is_verified": isVerified,
-    "is_active": isActive,
-    "can_login": canLogin,
-    "is_completed": isCompleted,
-    "2fa": the2Fa,
-    "created_at": createdAt?.toIso8601String(),
-    "updated_at": updatedAt?.toIso8601String(),
-    "roles": roles == null ? [] : List<dynamic>.from(roles!.map((x) => x.toJson())),
-  };
+        "id": id,
+        "firstname": firstname,
+        "lastname": lastname,
+        "network_provider": networkProvider,
+        "country_code": countryCode,
+        "phoneno": phoneno,
+        "email": email,
+        "email_verified_at": emailVerifiedAt,
+        "is_verified": isVerified,
+        "is_active": isActive,
+        "can_login": canLogin,
+        "is_completed": isCompleted,
+        "2fa": the2Fa,
+        "created_at": createdAt?.toIso8601String(),
+        "updated_at": updatedAt?.toIso8601String(),
+        "roles": roles == null
+            ? []
+            : List<dynamic>.from(roles!.map((x) => x.toJson())),
+      };
 }
 
 class Role {
@@ -156,28 +167,32 @@ class Role {
   });
 
   factory Role.fromJson(Map<String, dynamic> json) => Role(
-    id: json["id"],
-    name: json["name"],
-    slug: json["slug"],
-    description: json["description"],
-    level: json["level"],
-    createdAt: json["created_at"] == null ? null : DateTime.parse(json["created_at"]),
-    updatedAt: json["updated_at"] == null ? null : DateTime.parse(json["updated_at"]),
-    deletedAt: json["deleted_at"],
-    pivot: json["pivot"] == null ? null : Pivot.fromJson(json["pivot"]),
-  );
+        id: json["id"],
+        name: json["name"],
+        slug: json["slug"],
+        description: json["description"],
+        level: json["level"],
+        createdAt: json["created_at"] == null
+            ? null
+            : DateTime.parse(json["created_at"]),
+        updatedAt: json["updated_at"] == null
+            ? null
+            : DateTime.parse(json["updated_at"]),
+        deletedAt: json["deleted_at"],
+        pivot: json["pivot"] == null ? null : Pivot.fromJson(json["pivot"]),
+      );
 
   Map<String, dynamic> toJson() => {
-    "id": id,
-    "name": name,
-    "slug": slug,
-    "description": description,
-    "level": level,
-    "created_at": createdAt?.toIso8601String(),
-    "updated_at": updatedAt?.toIso8601String(),
-    "deleted_at": deletedAt,
-    "pivot": pivot?.toJson(),
-  };
+        "id": id,
+        "name": name,
+        "slug": slug,
+        "description": description,
+        "level": level,
+        "created_at": createdAt?.toIso8601String(),
+        "updated_at": updatedAt?.toIso8601String(),
+        "deleted_at": deletedAt,
+        "pivot": pivot?.toJson(),
+      };
 }
 
 class Pivot {
@@ -194,16 +209,20 @@ class Pivot {
   });
 
   factory Pivot.fromJson(Map<String, dynamic> json) => Pivot(
-    userId: json["user_id"],
-    roleId: json["role_id"],
-    createdAt: json["created_at"] == null ? null : DateTime.parse(json["created_at"]),
-    updatedAt: json["updated_at"] == null ? null : DateTime.parse(json["updated_at"]),
-  );
+        userId: json["user_id"],
+        roleId: json["role_id"],
+        createdAt: json["created_at"] == null
+            ? null
+            : DateTime.parse(json["created_at"]),
+        updatedAt: json["updated_at"] == null
+            ? null
+            : DateTime.parse(json["updated_at"]),
+      );
 
   Map<String, dynamic> toJson() => {
-    "user_id": userId,
-    "role_id": roleId,
-    "created_at": createdAt?.toIso8601String(),
-    "updated_at": updatedAt?.toIso8601String(),
-  };
+        "user_id": userId,
+        "role_id": roleId,
+        "created_at": createdAt?.toIso8601String(),
+        "updated_at": updatedAt?.toIso8601String(),
+      };
 }

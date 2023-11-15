@@ -7,9 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:otto_customer/core/base/bottom_nav_model.dart';
-import 'package:otto_customer/shared/utils/assets.dart';
+import 'package:otto_customer/shared/utils/bottom-nav-utils.dart';
 import 'package:otto_customer/shared/utils/color.dart';
-import 'package:otto_customer/shared/utils/styles.dart';
 import 'package:otto_customer/shared/utils/utils.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -119,7 +118,21 @@ class _BottomNav extends State<BottomNav> with WidgetsBindingObserver {
                   fontWeight: FontWeight.w500),
               backgroundColor: AppColors.white,
               currentIndex: model.currentIndex,
-              items: userBottomTabItems(context)),
+              items: navigationModel
+                  .map((e) => BottomNavigationBarItem(
+                        activeIcon: SvgPicture.asset(
+                          e.activeIcon,
+                          color: AppColors.primaryColor,
+                        ),
+                        icon: SvgPicture.asset(
+                          e.icon,
+                          color: AppColors.primaryBgColor,
+                        ),
+                        label: e.title,
+                      ))
+                  .toList()
+              // userBottomTabItems(context)
+              ),
           body: SafeArea(
               child: SizedBox(
                   height: deviceHeight(context).h,

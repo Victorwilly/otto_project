@@ -9,7 +9,8 @@ class AppColors {
   static const Color warningColor = Color(0xffFF9800);
   static const Color primaryBgColor = Color(0xffEBF2FE);
   static const Color white = Colors.white;
-  static const Color white2 =  Color(0xffEBFFFA);
+  static const Color white2 = Color(0xffEBFFFA);
+  static const Color grayscale = Color(0xff4F5862);
 
   static const Color black = Color(0xff292B2F);
   static const Color black2 = Color(0xff717F8D);
