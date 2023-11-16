@@ -4,7 +4,8 @@ import 'package:otto_customer/shared/models/authentication/request_login_dto.dar
 import 'package:otto_customer/shared/widgets/all_package.dart';
 
 class ReturnLoginViewModel extends BaseViewModel {
-  ReturnLoginViewModel({this.userData, this.context, this.authenticationService});
+  ReturnLoginViewModel(
+      {this.userData, this.context, this.authenticationService});
 
   final BuildContext? context;
   final AuthenticationService? authenticationService;
@@ -101,7 +102,7 @@ class ReturnLoginViewModel extends BaseViewModel {
     loading(true);
     try {
       final ApiResponse<AuthenticationDto> res =
-      await authenticationService!.accountLoginService(data!);
+          await authenticationService!.accountLoginService(data!);
       debugPrint("accountLogin message from res ${res.message}");
       if (res.error!) {
         debugPrint("accountLogin error message ${res.message}");
@@ -111,6 +112,7 @@ class ReturnLoginViewModel extends BaseViewModel {
       } else {
         // message = "Success!";
         message = res.message;
+        si.userService.setUserInfo(res.data!.data!);
         persistData(res.data!.data!.toJson());
         debugPrint("accountLogin success message ${res.message}");
         debugPrint("accountLogin success data ${res.data}");
@@ -129,7 +131,7 @@ class ReturnLoginViewModel extends BaseViewModel {
     loading(true);
     try {
       final ApiResponse<RequestLoginDto> res =
-      await authenticationService!.requestLoginService(data!);
+          await authenticationService!.requestLoginService(data!);
       debugPrint("logout message from res ${res.message}");
       if (res.error!) {
         debugPrint("logout error message ${res.message}");

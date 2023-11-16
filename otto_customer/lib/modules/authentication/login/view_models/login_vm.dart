@@ -1,5 +1,4 @@
 import 'package:otto_customer/modules/authentication/login/enter_login_verification.dart';
-import 'package:otto_customer/shared/models/authentication/login_verification_dto.dart';
 import 'package:otto_customer/shared/models/authentication/request_login_dto.dart';
 import 'package:otto_customer/shared/widgets/all_package.dart';
 
@@ -33,14 +32,17 @@ class LoginViewModel extends BaseViewModel {
       "phone_number": phoneNumberController.text
     };
 
-    if(newLoginFormKey.currentState!.validate()) {
+    if (newLoginFormKey.currentState!.validate()) {
       newLoginFormKey.currentState!.save;
       if (await requestLogin(data: body)) {
         snackBar(context: context!, message: message!, isError: false);
         Navigator.push(
-          context!, MaterialPageRoute(builder: (context) => EnterLoginVerification(
-            dialCode: countryController.text,  phoneNumber: phoneNumberController.text),
-        ),
+          context!,
+          MaterialPageRoute(
+            builder: (context) => EnterLoginVerification(
+                dialCode: countryController.text,
+                phoneNumber: phoneNumberController.text),
+          ),
         );
       } else {
         snackBar(context: context!, message: message!, isError: true);
@@ -52,7 +54,7 @@ class LoginViewModel extends BaseViewModel {
     loading(true);
     try {
       final ApiResponse<RequestLoginDto> res =
-      await authenticationService!.requestLoginService(data!);
+          await authenticationService!.requestLoginService(data!);
       debugPrint("requestLogin message from res ${res.message}");
       if (res.error!) {
         debugPrint("requestLogin error message ${res.message}");
@@ -74,4 +76,6 @@ class LoginViewModel extends BaseViewModel {
       return false;
     }
   }
+
+  void set() {}
 }

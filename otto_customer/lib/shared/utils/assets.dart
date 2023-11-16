@@ -7,7 +7,6 @@ const String LOTTIEPATH = "assets/lottie";
 class ImageAssets {
   static const String intro = "$IMAGEPATH/intro.png";
   static const String successIcon = "$IMAGEPATH/success_icon.png";
-
 }
 
 class SvgAssets {
@@ -24,6 +23,19 @@ class SvgAssets {
   static const String eye = "$SVGPATH/eye.svg";
   static const String eyeSlash = "$SVGPATH/eye_slash.svg";
 
+  static const String home = "$SVGPATH/home.svg";
+  static const String giftCards = "$SVGPATH/giftcards.svg";
+  static const String loyalty = "$SVGPATH/loyalty.svg";
+  static const String transactions = "$SVGPATH/transactions.svg";
+  static const String homeActive = "$SVGPATH/home-active.svg";
+  static const String giftCardsActive = "$SVGPATH/giftcards-active.svg";
+  static const String loyaltyActive = "$SVGPATH/loyalty-active.svg";
+  static const String transactionsActive = "$SVGPATH/transactions.svg";
+
+  static const String gcSuffix = "$SVGPATH/gc-suffix.svg";
+  static const String cashbackBanner = "$SVGPATH/cashback-banner.svg";
+  static const String appbarBg = "$SVGPATH/appbar-bg.svg";
+  static const String search = "$SVGPATH/search.svg";
 }
 
 class LottieAssets {
