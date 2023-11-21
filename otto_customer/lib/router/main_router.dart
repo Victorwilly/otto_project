@@ -10,7 +10,11 @@ import 'package:otto_customer/modules/authentication/forgot_password/enter_otp.d
 import 'package:otto_customer/modules/authentication/forgot_password/forgot_pin.dart';
 import 'package:otto_customer/modules/authentication/forgot_password/setup_new_pin.dart';
 import 'package:otto_customer/modules/authentication/login/enter_login_verification.dart';
+import 'package:otto_customer/modules/dashboard/cart/cart-order-summary.dart';
+import 'package:otto_customer/modules/dashboard/cart/cart.ui.dart';
+import 'package:otto_customer/modules/dashboard/gift-card/giftcard.dart';
 import 'package:otto_customer/modules/dashboard/homepage/bottom-nav-page.dart';
+import 'package:otto_customer/modules/dashboard/top-mechants/top-merchants.dart';
 import 'package:otto_customer/modules/splash/splash_options.dart';
 import 'package:otto_customer/modules/splash/splash_screen.dart';
 
@@ -58,6 +62,14 @@ class MainRouter {
             builder: (_) => const BottomNavPage()); //BottomNav());
       case RoutePaths.splashOptions:
         return MaterialPageRoute(builder: (_) => const SplashOptions());
+      case RoutePaths.topMerchants:
+        return MaterialPageRoute(builder: (_) => TopMerchantsPage());
+      case RoutePaths.sendGiftCardRoute:
+        return MaterialPageRoute(builder: (_) => SendGiftCardsPage());
+      case RoutePaths.cartPageRoute:
+        return MaterialPageRoute(builder: (_) => CartPage());
+      case RoutePaths.cartOrderSummaryPageRoute:
+        return MaterialPageRoute(builder: (_) => CartOrderSummaryPage());
       default:
         return MaterialPageRoute(
             builder: (_) => Scaffold(

@@ -6,7 +6,7 @@ import 'package:otto_customer/core/service-injector/service_injector.dart';
 import 'package:otto_customer/shared/models/api_model.dart';
 import 'package:otto_customer/shared/models/authentication/authentication_dto.dart';
 
-class HomePageViewModel extends BaseViewModel {
+class TopMerchantViewModel extends BaseViewModel {
   LoginData? data;
 
   bool _isLoading = false;

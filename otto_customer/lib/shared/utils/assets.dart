@@ -7,6 +7,7 @@ const String LOTTIEPATH = "assets/lottie";
 class ImageAssets {
   static const String intro = "$IMAGEPATH/intro.png";
   static const String successIcon = "$IMAGEPATH/success_icon.png";
+  static const String gcFrame = "$IMAGEPATH/gc-frame.png";
 }
 
 class SvgAssets {
@@ -14,6 +15,7 @@ class SvgAssets {
   static const String logoIcon = "$SVGPATH/logo_icon.svg";
   static const String intro = "$SVGPATH/intro.svg";
   static const String cart = "$SVGPATH/cart.svg";
+  static const String cartDark = "$SVGPATH/cart-dark.svg";
   static const String dropdown = "$SVGPATH/dropdown.svg";
   static const String notif = "$SVGPATH/notif.svg";
   static const String notificationBell = "$SVGPATH/notification_bell.svg";
@@ -36,6 +38,10 @@ class SvgAssets {
   static const String cashbackBanner = "$SVGPATH/cashback-banner.svg";
   static const String appbarBg = "$SVGPATH/appbar-bg.svg";
   static const String search = "$SVGPATH/search.svg";
+  static const String chickenRepublicGiftCard =
+      "$SVGPATH/chickenrepublic-gc.svg";
+  static const String contact = "$SVGPATH/contact_.svg";
+  static const String delete = "$SVGPATH/delete.svg";
 }
 
 class LottieAssets {

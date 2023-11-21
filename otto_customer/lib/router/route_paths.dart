@@ -16,10 +16,13 @@ class RoutePaths {
   static const String setupNewPin = '/setupNewPin';
   static const String pinResetSuccess = '/pinResetSuccess';
 
-
   static const String bottomNav = "/bottomNav";
 
-  // static const String otp = '/otp';
+  static const String topMerchants = '/topMerchants';
+  static const String sendGiftCardRoute = '/sendGiftCardRoute';
+  static const String cartPageRoute = '/cartPageRoute';
+  static const String cartOrderSummaryPageRoute = '/cartOrderSummaryPageRoute';
+
   // static const String emailOtp = '/emailOtp';
   // static const String editProfile = '/editProfile';
   // static const String createPassword = '/createPassword';

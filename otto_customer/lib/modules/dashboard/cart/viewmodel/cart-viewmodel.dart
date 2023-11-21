@@ -6,7 +6,15 @@ import 'package:otto_customer/core/service-injector/service_injector.dart';
 import 'package:otto_customer/shared/models/api_model.dart';
 import 'package:otto_customer/shared/models/authentication/authentication_dto.dart';
 
-class HomePageViewModel extends BaseViewModel {
+class CartViewModel extends BaseViewModel {
+  num pageIndex = 0;
+
+  updateIndex(num m) {
+    print(m);
+    pageIndex = m;
+    notifyListeners();
+  }
+
   LoginData? data;
 
   bool _isLoading = false;
@@ -26,7 +34,6 @@ class HomePageViewModel extends BaseViewModel {
   @override
   FutureOr<void> init() {
     getUserInfo();
-    getDashboardStats();
   }
 
   Future<bool> getAllGiftCards() async {

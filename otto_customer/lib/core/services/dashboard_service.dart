@@ -18,14 +18,29 @@ class DashboardService {
   StoreService storeService;
 
   Future<ApiResponse> dataOwnerDashboardStatisticsService(
-      Map<String, String> params,
-      {required BuildContext context}) {
+    Map<String, String> params,
+    // { required BuildContext context}
+  ) {
     return si.apiService!.getApi(
-      'Request/GetDataOwnerDashBoardStatistics',
-      params: params,
-      context: context,
+      'customer/orders/dashboard',
+      // params: params,
+      // context: context,
+      useToken: true,
       transform: (dynamic res) {
         return res;
+      },
+    );
+  }
+
+  Future<ApiResponse<dynamic>> getGiftCards() {
+    return si.apiService!.getApi<dynamic>(
+      'merchant/giftcards/all',
+      useToken: true,
+      // context,
+      transform: (dynamic res) {
+        debugPrint("getGiftCards transform message ${res["message"]}");
+        return res;
+        // return res;
       },
     );
   }

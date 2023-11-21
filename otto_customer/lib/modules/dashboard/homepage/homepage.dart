@@ -1,4 +1,5 @@
 import 'package:otto_customer/modules/dashboard/homepage/view-models/homepage_vm.dart';
+import 'package:otto_customer/modules/dashboard/top-mechants/top-merchants.dart';
 
 import '../../../shared/widgets/all_package.dart';
 
@@ -87,8 +88,10 @@ class HomePage extends StatelessWidget {
                               Styles.semiBold("Welcome Back,",
                                   color: AppColors.white, fontSize: 16.sp),
                               HSpace(8.h),
-                              Styles.bold("Jhud Chukwuka",
-                                  color: AppColors.white, fontSize: 20.sp),
+                              Styles.bold(
+                                  "${viewModel.data?.user?.firstname} ${viewModel.data?.user?.lastname}",
+                                  color: AppColors.white,
+                                  fontSize: 20.sp),
                               HSpace(12.h),
                               Row(
                                 children: [
@@ -125,8 +128,11 @@ class HomePage extends StatelessWidget {
                               fontSize: 16.sp,
                             ),
                             border: InputBorder.none,
-                            suffixIcon: SvgPicture.asset(
-                              SvgAssets.search,
+                            suffixIcon: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 10),
+                              child: SvgPicture.asset(
+                                SvgAssets.search,
+                              ),
                             ),
                           ),
                         ),
@@ -153,24 +159,43 @@ class HomePage extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Styles.semiBold("Top Merchants", color: Colors.black),
-                          Styles.regular("See all", color: Colors.black),
+                          GestureDetector(
+                              behavior: HitTestBehavior.opaque,
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => TopMerchantsPage(),
+                                  ),
+                                );
+                              },
+                              child: Styles.regular("See all",
+                                  color: Colors.black)),
                         ],
                       ),
                       HSpace(16.h),
                       SizedBox(
-                        height: 300,
+                        // height: 100,
                         child: SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           child: Row(
                             children: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-                                .map((e) => Column(
-                                      children: [
-                                        Image.asset(
-                                            'assets/images/chicken-republic.png'),
-                                        HSpace(8.h),
-                                        Styles.semiBold("Chicken Republic",
-                                            color: Colors.black)
-                                      ],
+                                .map((e) => GestureDetector(
+                                      onTap: () =>
+                                          viewModel.getDashboardStats(),
+                                      child: Container(
+                                        margin: EdgeInsets.symmetric(
+                                            horizontal: 4.w),
+                                        child: Column(
+                                          children: [
+                                            Image.asset(
+                                                'assets/images/chicken-republic.png'),
+                                            HSpace(8.h),
+                                            Styles.semiBold("Chicken Republic",
+                                                color: Colors.black)
+                                          ],
+                                        ),
+                                      ),
                                     ))
                                 .toList(),
                           ),
