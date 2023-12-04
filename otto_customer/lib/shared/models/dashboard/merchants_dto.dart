@@ -1,14 +1,14 @@
-class GiftcardDto {
+class MerchantsDto {
   bool? error;
   String? message;
-  GiftCardRes? data;
+  MerchantsData? data;
 
-  GiftcardDto({this.error, this.message, this.data});
+  MerchantsDto({this.error, this.message, this.data});
 
-  GiftcardDto.fromJson(Map<String, dynamic> json) {
+  MerchantsDto.fromJson(Map<String, dynamic> json) {
     error = json['error'];
     message = json['message'];
-    data = json['data'] != null ? GiftCardRes.fromJson(json['data']) : null;
+    data = json['data'] != null ? MerchantsData.fromJson(json['data']) : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -22,22 +22,22 @@ class GiftcardDto {
   }
 }
 
-class GiftCardRes {
+class MerchantsData {
   int? currentPage;
-  List<Data>? data;
+  List<MerchantModel>? data;
   String? firstPageUrl;
   int? from;
   int? lastPage;
   String? lastPageUrl;
   List<Links>? links;
-  dynamic nextPageUrl;
+  String? nextPageUrl;
   String? path;
   int? perPage;
-  dynamic prevPageUrl;
+  String? prevPageUrl;
   int? to;
   int? total;
 
-  GiftCardRes(
+  MerchantsData(
       {this.currentPage,
       this.data,
       this.firstPageUrl,
@@ -52,12 +52,12 @@ class GiftCardRes {
       this.to,
       this.total});
 
-  GiftCardRes.fromJson(Map<String, dynamic> json) {
+  MerchantsData.fromJson(Map<String, dynamic> json) {
     currentPage = json['current_page'];
     if (json['data'] != null) {
-      data = <Data>[];
+      data = <MerchantModel>[];
       json['data'].forEach((v) {
-        data!.add(Data.fromJson(v));
+        data!.add(MerchantModel.fromJson(v));
       });
     }
     firstPageUrl = json['first_page_url'];
@@ -101,134 +101,29 @@ class GiftCardRes {
   }
 }
 
-class Data {
+class MerchantModel {
   int? id;
-  int? merchantGiftCardId;
-  int? orderId;
-  int? orderDetailsId;
   int? userId;
-  int? receiverId;
-  int? value;
-  int? balance;
-  String? giftCardID;
-  String? personal;
-  String? phoneno;
-  String? email;
-  String? status;
-  dynamic createdAt;
-  dynamic updatedAt;
-  MerchantGiftCard? merchantGiftCard;
-
-  Data(
-      {this.id,
-      this.merchantGiftCardId,
-      this.orderId,
-      this.orderDetailsId,
-      this.userId,
-      this.receiverId,
-      this.value,
-      this.balance,
-      this.giftCardID,
-      this.personal,
-      this.phoneno,
-      this.email,
-      this.status,
-      this.createdAt,
-      this.updatedAt,
-      this.merchantGiftCard});
-
-  Data.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    merchantGiftCardId = json['merchant_gift_card_id'];
-    orderId = json['order_id'];
-    orderDetailsId = json['order_details_id'];
-    userId = json['user_id'];
-    receiverId = json['receiver_id'];
-    value = json['value'];
-    balance = json['balance'];
-    giftCardID = json['giftCardID'];
-    personal = json['personal'];
-    phoneno = json['phoneno'];
-    email = json['email'];
-    status = json['status'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
-    merchantGiftCard = json['merchant_gift_card'] != null
-        ? MerchantGiftCard.fromJson(json['merchant_gift_card'])
-        : null;
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['merchant_gift_card_id'] = merchantGiftCardId;
-    data['order_id'] = orderId;
-    data['order_details_id'] = orderDetailsId;
-    data['user_id'] = userId;
-    data['receiver_id'] = receiverId;
-    data['value'] = value;
-    data['balance'] = balance;
-    data['giftCardID'] = giftCardID;
-    data['personal'] = personal;
-    data['phoneno'] = phoneno;
-    data['email'] = email;
-    data['status'] = status;
-    data['created_at'] = createdAt;
-    data['updated_at'] = updatedAt;
-    if (merchantGiftCard != null) {
-      data['merchant_gift_card'] = merchantGiftCard!.toJson();
-    }
-    return data;
-  }
-}
-
-class MerchantGiftCard {
-  int? id;
-  int? merchantId;
-  int? confettiStyleId;
-  String? title;
-  String? description;
-  String? uploadType;
-  dynamic fileUrl;
-  String? colorCode;
-  dynamic barcodeId;
-  String? price;
-  int? isAvailable;
-  int? isActive;
+  String? companyName;
+  String? companyRegNo;
   String? createdAt;
   String? updatedAt;
   Merchant? merchant;
 
-  MerchantGiftCard(
+  MerchantModel(
       {this.id,
-      this.merchantId,
-      this.confettiStyleId,
-      this.title,
-      this.description,
-      this.uploadType,
-      this.fileUrl,
-      this.colorCode,
-      this.barcodeId,
-      this.price,
-      this.isAvailable,
-      this.isActive,
+      this.userId,
+      this.companyName,
+      this.companyRegNo,
       this.createdAt,
       this.updatedAt,
       this.merchant});
 
-  MerchantGiftCard.fromJson(Map<String, dynamic> json) {
+  MerchantModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    merchantId = json['merchant_id'];
-    confettiStyleId = json['confetti_style_id'];
-    title = json['title'];
-    description = json['description'];
-    uploadType = json['upload_type'];
-    fileUrl = json['file_url'];
-    colorCode = json['color_code'];
-    barcodeId = json['barcode_id'];
-    price = json['price'];
-    isAvailable = json['is_available'];
-    isActive = json['is_active'];
+    userId = json['user_id'];
+    companyName = json['company_name'];
+    companyRegNo = json['company_reg_no'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
     merchant =
@@ -238,17 +133,9 @@ class MerchantGiftCard {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
-    data['merchant_id'] = merchantId;
-    data['confetti_style_id'] = confettiStyleId;
-    data['title'] = title;
-    data['description'] = description;
-    data['upload_type'] = uploadType;
-    data['file_url'] = fileUrl;
-    data['color_code'] = colorCode;
-    data['barcode_id'] = barcodeId;
-    data['price'] = price;
-    data['is_available'] = isAvailable;
-    data['is_active'] = isActive;
+    data['user_id'] = userId;
+    data['company_name'] = companyName;
+    data['company_reg_no'] = companyRegNo;
     data['created_at'] = createdAt;
     data['updated_at'] = updatedAt;
     if (merchant != null) {
@@ -266,13 +153,13 @@ class Merchant {
   String? countryCode;
   String? phoneno;
   String? email;
-  dynamic hearAboutUs;
-  dynamic referralCode;
-  dynamic referral;
+  String? hearAboutUs;
+  String? referralCode;
+  String? referral;
   String? emailVerifiedAt;
-  dynamic otp;
-  dynamic departmentId;
-  dynamic image;
+  String? otp;
+  String? departmentId;
+  String? image;
   int? isVerified;
   int? isActive;
   int? canLogin;
@@ -283,7 +170,6 @@ class Merchant {
   List<Roles>? roles;
   dynamic userbilling;
   dynamic usershipping;
-  Merchantinformation? merchantinformation;
 
   Merchant(
       {this.id,
@@ -309,8 +195,7 @@ class Merchant {
       this.updatedAt,
       this.roles,
       this.userbilling,
-      this.usershipping,
-      this.merchantinformation});
+      this.usershipping});
 
   Merchant.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -342,9 +227,6 @@ class Merchant {
     }
     userbilling = json['userbilling'];
     usershipping = json['usershipping'];
-    merchantinformation = json['merchantinformation'] != null
-        ? Merchantinformation.fromJson(json['merchantinformation'])
-        : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -375,9 +257,6 @@ class Merchant {
     }
     data['userbilling'] = userbilling;
     data['usershipping'] = usershipping;
-    if (merchantinformation != null) {
-      data['merchantinformation'] = merchantinformation!.toJson();
-    }
     return data;
   }
 }
@@ -456,43 +335,6 @@ class Pivot {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['user_id'] = userId;
     data['role_id'] = roleId;
-    data['created_at'] = createdAt;
-    data['updated_at'] = updatedAt;
-    return data;
-  }
-}
-
-class Merchantinformation {
-  int? id;
-  int? userId;
-  String? companyName;
-  String? companyRegNo;
-  String? createdAt;
-  String? updatedAt;
-
-  Merchantinformation(
-      {this.id,
-      this.userId,
-      this.companyName,
-      this.companyRegNo,
-      this.createdAt,
-      this.updatedAt});
-
-  Merchantinformation.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    userId = json['user_id'];
-    companyName = json['company_name'];
-    companyRegNo = json['company_reg_no'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['user_id'] = userId;
-    data['company_name'] = companyName;
-    data['company_reg_no'] = companyRegNo;
     data['created_at'] = createdAt;
     data['updated_at'] = updatedAt;
     return data;

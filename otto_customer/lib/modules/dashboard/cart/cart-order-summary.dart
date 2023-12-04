@@ -32,7 +32,7 @@ class CartOrderSummaryPage extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        HSpace(24),
+                        const HSpace(24),
                         Container(
                           width: double.infinity,
                           padding: EdgeInsets.all(12.r),
@@ -45,67 +45,68 @@ class CartOrderSummaryPage extends StatelessWidget {
                               Image.asset(
                                 ImageAssets.gcFrame,
                               ),
-                              HSpace(8),
+                              const HSpace(8),
                               Styles.semiBold("Chicken Republic GiftCard",
-                                  color: Color(0Xff101828), fontSize: 14.sp),
-                              HSpace(16),
+                                  color: const Color(0Xff101828),
+                                  fontSize: 14.sp),
+                              const HSpace(16),
                               Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Styles.regular("To:",
-                                      color: Color(0Xff4F5862),
+                                      color: const Color(0Xff4F5862),
                                       fontSize: 12.sp),
                                   Styles.regular("mike@mail.com",
-                                      color: Color(0Xff4F5862),
+                                      color: const Color(0Xff4F5862),
                                       fontSize: 12.sp),
                                 ],
                               ),
-                              HSpace(10),
+                              const HSpace(10),
                               Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Styles.regular("From:",
-                                      color: Color(0Xff4F5862),
+                                      color: const Color(0Xff4F5862),
                                       fontSize: 12.sp),
                                   Styles.regular("Precious",
-                                      color: Color(0Xff4F5862),
+                                      color: const Color(0Xff4F5862),
                                       fontSize: 12.sp),
                                 ],
                               ),
                               HSpace(12.h),
-                              Divider(),
-                              HSpace(10),
+                              const Divider(),
+                              const HSpace(10),
                               Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Styles.bold("Message:",
-                                      color: Color(0Xff4F5862),
+                                      color: const Color(0Xff4F5862),
                                       fontSize: 12.sp),
                                   Styles.regular("Enjoy a beautiful meal 🎉",
-                                      color: Color(0Xff4F5862),
+                                      color: const Color(0Xff4F5862),
                                       fontSize: 12.sp),
                                 ],
                               ),
-                              HSpace(10),
+                              const HSpace(10),
                               Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Styles.regular("Total:",
-                                      color: Color(0Xff4F5862),
+                                      color: const Color(0Xff4F5862),
                                       fontSize: 12.sp),
                                   Styles.bold("₵ 500",
-                                      color: Color(0Xff4F5862),
+                                      color: const Color(0Xff4F5862),
                                       fontSize: 12.sp),
                                 ],
                               ),
                             ],
                           ),
                         ),
-                        Spacer(),
+                        const Spacer(),
                         CustomButton(
                             isActive: true,
                             margin: 0.w,
@@ -117,7 +118,7 @@ class CartOrderSummaryPage extends StatelessWidget {
                                         CartOrderSummaryPage(),
                                   ),
                                 )),
-                        HSpace(100),
+                        const HSpace(100),
                       ],
                     ),
                   ),

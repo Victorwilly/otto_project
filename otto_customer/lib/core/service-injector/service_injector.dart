@@ -21,7 +21,9 @@ class Injector {
         storeService: storeService,
         apiService: apiService!);
     dashboardService = DashboardService(
-        storageService: storageService, storeService: storeService);
+        storageService: storageService,
+        storeService: storeService,
+        apiService: apiService!);
     userService = UserService();
     return true;
   }

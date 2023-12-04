@@ -32,7 +32,8 @@ class TopMerchantViewModel extends BaseViewModel {
   Future<bool> getAllGiftCards() async {
     isLoading = (true);
     try {
-      final ApiResponse<dynamic> res = await si.dashboardService.getGiftCards();
+      final ApiResponse<dynamic> res =
+          await si.dashboardService.getGiftCards({"search_param": ""});
       debugPrint("requestLogin message from res ${res.message}");
       if (res.error!) {
         debugPrint("requestLogin error message ${res.message}");

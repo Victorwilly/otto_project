@@ -29,6 +29,7 @@ class ApiService {
       h[HttpHeaders.contentTypeHeader] = 'application/json; charset=UTF-8';
     }
     h[HttpHeaders.authorizationHeader] = 'Bearer $auth';
+
     return h;
   }
 
@@ -263,7 +264,7 @@ class ApiService {
 
       print(uri);
       final http.Response res = await http.get(uri, headers: headers);
-      print("api result:${res.body}");
+      print("api result:${res.statusCode}");
       final dynamic data = json.decode(res.body);
 
       if (res.statusCode == 200 || res.statusCode == 201) {

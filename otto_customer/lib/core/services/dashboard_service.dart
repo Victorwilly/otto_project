@@ -2,9 +2,12 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:otto_customer/core/services/api_service.dart';
+import 'package:otto_customer/shared/models/dashboard/dashboard-stats.dart';
+import 'package:otto_customer/shared/models/dashboard/giftcards.dart';
+import 'package:otto_customer/shared/models/dashboard/merchants_dto.dart';
 
 import '../../shared/models/api_model.dart';
-import '../service-injector/service_injector.dart';
 import 'storage_service.dart';
 import 'store_service.dart';
 
@@ -12,34 +15,54 @@ class DashboardService {
   DashboardService({
     required this.storageService,
     required this.storeService,
+    required this.apiService,
   });
 
   StorageService storageService;
   StoreService storeService;
+  ApiService apiService;
 
-  Future<ApiResponse> dataOwnerDashboardStatisticsService(
+  Future<ApiResponse<DashboardStatsDto>> dataOwnerDashboardStatisticsService(
     Map<String, String> params,
     // { required BuildContext context}
   ) {
-    return si.apiService!.getApi(
-      'customer/orders/dashboard',
+    return apiService.getApi(
+      'customer/dashboard',
       // params: params,
       // context: context,
       useToken: true,
       transform: (dynamic res) {
-        return res;
+        return DashboardStatsDto.fromJson(res);
       },
     );
   }
 
-  Future<ApiResponse<dynamic>> getGiftCards() {
-    return si.apiService!.getApi<dynamic>(
-      'merchant/giftcards/all',
+  Future<ApiResponse<GiftcardDto>> getGiftCards(
+    Map<String, String> params,
+  ) {
+    return apiService.postApi<GiftcardDto>(
+      'merchant/giftcards/all', params,
       useToken: true,
       // context,
       transform: (dynamic res) {
         debugPrint("getGiftCards transform message ${res["message"]}");
-        return res;
+        return GiftcardDto.fromJson(res);
+        // return res;
+      },
+    );
+  }
+
+  Future<ApiResponse<MerchantsDto>> getMerchants(
+    Map<String, String> params,
+  ) {
+    return apiService.postApi<MerchantsDto>(
+      'customer/dashboard/all_merchants',
+      params,
+      useToken: true,
+      // context,
+      transform: (dynamic res) {
+        debugPrint("getMerchants transform message ${res["message"]}");
+        return MerchantsDto.fromJson(res);
         // return res;
       },
     );
